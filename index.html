@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripleSeven - Start Here</title>
+    <link rel="stylesheet" href="diy-style.css">
+    <style>
+        .hero-section {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .portal-card {
+            background: #0d152d;
+            border: 1px solid rgba(255, 0, 127, 0.25);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: left;
+            text-decoration: none;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--pink-primary, #ff007f);
+            box-shadow: 0 8px 20px rgba(255, 0, 127, 0.2);
+        }
+
+        .portal-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .portal-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+        }
+
+        .portal-desc {
+            color: #a0aec0;
+            font-size: 0.88rem;
+            line-height: 1.4;
+        }
+
+        .portal-tag {
+            font-size: 0.75rem;
+            color: var(--pink-light, #ff77b4);
+            font-weight: bold;
+            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header-Left">
+                <a href="index.html" class="logo">TripleSeven</a>
+            </div>
+            <div class="header-Right">
+                <a href="about.html">Player Profile</a>
+                <a href="origin.html">Why 777?</a>
+                <a href="gaming.html">Player 777</a>
+                <a href="movies.html">The 7th Reel</a>
+                <a href="music.html">The 7th Track</a>
+                <a class="active" href="index.html">Start Here</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-badge">DIGITAL HUB // TRIPLESEVEN</div>
+            <h1>Welcome to TripleSeven</h1>
+            <p class="hero-description">
+                Personal archives, gaming achievements, watchlists, and soundtrack rotations.
+            </p>
+        </section>
+
+        <!-- MAIN PORTAL NAVIGATION GRID -->
+        <div class="portal-grid">
+
+            <!-- PORTAL 1: ABOUT / PLAYER PROFILE -->
+            <a href="about.html" class="portal-card">
+                <div>
+                    <div class="portal-icon">👤</div>
+                    <div class="portal-title">Player Profile</div>
+                    <div class="portal-desc">Introduction, personal dossier, and core background.</div>
+                </div>
+                <div class="portal-tag">Explore Bio &rarr;</div>
+            </a>
+
+            <!-- PORTAL 2: ORIGIN / WHY 777 -->
+            <a href="origin.html" class="portal-card">
+                <div>
+                    <div class="portal-icon">🎰</div>
+                    <div class="portal-title">Why 777?</div>
+                    <div class="portal-desc">The lore and meaning behind the TripleSeven name.</div>
+                </div>
+                <div class="portal-tag">Read Origin &rarr;</div>
+            </a>
+
+            <!-- PORTAL 3: GAMING / PLAYER 777 -->
+            <a href="gaming.html" class="portal-card">
+                <div>
+                    <div class="portal-icon">🎮</div>
+                    <div class="portal-title">Player 777</div>
+                    <div class="portal-desc">MLBB peak ranks, signature heroes, legacy shooters, and pastime logic games.</div>
+                </div>
+                <div class="portal-tag">View Gaming Dossier &rarr;</div>
+            </a>
+
+            <!-- PORTAL 4: MOVIES / THE 7TH REEL -->
+            <a href="movies.html" class="portal-card">
+                <div>
+                    <div class="portal-icon">🎬</div>
+                    <div class="portal-title">The 7th Reel</div>
+                    <div class="portal-desc">Watchlists, favorite series, anime picks, and current shows.</div>
+                </div>
+                <div class="portal-tag">Open Cinema Archives &rarr;</div>
+            </a>
+
+            <!-- PORTAL 5: MUSIC / THE 7TH TRACK -->
+            <a href="music.html" class="portal-card">
+                <div>
+                    <div class="portal-icon">🎧</div>
+                    <div class="portal-title">The 7th Track</div>
+                    <div class="portal-desc">Heavy rotation tracks, favorite artist roster, and sound profiles.</div>
+                </div>
+                <div class="portal-tag">Listen To Audio Vault &rarr;</div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            © Copyright <strong><span>TripleSeven</span></strong>. All Rights Reserved
+        </div>
+    </footer>
+</body>
+</html>

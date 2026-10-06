@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripleSeven - The 7th Track</title>
+    <link rel="stylesheet" href="diy-style.css">
+    <style>
+        .music-container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* FEATURED ON REPEAT BANNER */
+        .featured-repeat-card {
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), #0d152d);
+            border: 2px solid var(--pink-primary, #ff007f);
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 24px rgba(255, 0, 127, 0.15);
+        }
+
+        .featured-left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            text-align: left;
+        }
+
+        .repeat-album-cover {
+            width: 65px;
+            height: 65px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid var(--pink-primary, #ff007f);
+        }
+
+        .featured-title-tag {
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--pink-light, #ff77b4);
+            font-weight: bold;
+        }
+
+        .featured-song-title {
+            font-size: 1.4rem;
+            color: #fff;
+            font-weight: 800;
+            margin: 2px 0;
+        }
+
+        .featured-artist {
+            font-size: 0.95rem;
+            color: #a0aec0;
+        }
+
+        /* IN-LINE AUDIO PLAYER STYLES */
+        .audio-wrapper {
+            flex-shrink: 0;
+        }
+
+        .audio-wrapper audio {
+            height: 38px;
+            width: 240px;
+            border-radius: 20px;
+            outline: none;
+            filter: invert(0.9) hue-rotate(280deg);
+        }
+
+        /* GRID LAYOUTS */
+        .artist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .artist-track-card {
+            background: #0d152d;
+            border: 1px solid rgba(255, 0, 127, 0.25);
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .artist-track-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--pink-primary, #ff007f);
+        }
+
+        .artist-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--pink-primary, #ff007f);
+            flex-shrink: 0;
+            background: #1a233d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .artist-info {
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .artist-name {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--pink-light, #ff77b4);
+            font-weight: bold;
+        }
+
+        .artist-card-link,
+        .artist-card-link *,
+        a {
+            text-decoration: none !important;
+            color: inherit;
+        }
+
+        .fave-song {
+            font-size: 1.05rem;
+            color: #fff;
+            font-weight: 700;
+            margin: 2px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .song-tag {
+            font-size: 0.75rem;
+            color: #a0aec0;
+        }
+
+        /* GENRES SECTION */
+        .sound-profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .genre-card {
+            background: #0d152d;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 1.2rem;
+            text-align: left;
+        }
+
+        .genre-card h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .genre-card p {
+            font-size: 0.88rem;
+            color: #a0aec0;
+            line-height: 1.5;
+        }
+
+        .stream-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            background: rgba(255, 0, 127, 0.1);
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            border-radius: 20px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.8rem;
+            color: var(--text-muted, #8e9aaf);
+            margin: 0 auto 1.5rem auto;
+            width: fit-content;
+        }
+
+        .stream-badge span {
+            color: var(--pink-primary, #ff007f);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 600px) {
+            .featured-repeat-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .audio-wrapper, 
+            .audio-wrapper audio {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header-Left">
+                <a href="index.html" class="logo">TripleSeven</a>
+            </div>
+            <div class="header-Right">
+                <a href="about.html">Player Profile</a>
+                <a href="origin.html">Why 777?</a>
+                <a href="gaming.html">Player 777</a>
+                <a href="movies.html">The 7th Reel</a>
+                <a class="active" href="music.html">The 7th Track</a>
+                <a href="index.html">Start Here</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="hero-badge">AUDIO VAULT // REPEATS</div>
+        <h1>The 7th Track</h1>
+        <p class="hero-description">
+            The soundtrack powering TripleSeven. Heavy rotations, favorite artists, and favorite songs.
+        </p>
+
+        <div class="stream-badge">
+            💡 <span>PRO TIP:</span> Tap any track card to listen!
+        </div>
+
+        <div class="music-container">
+
+        <!-- FEATURED ON REPEAT CARD -->
+        <div class="featured-repeat-card" 
+            onmouseenter="playTrack()" 
+            onmouseleave="pauseTrack()">
+            
+            <div class="featured-left">
+                <img src="images/nowhere-nobody.jpg" alt="nowhere, nobody Album Cover" class="repeat-album-cover" onerror="this.outerHTML='<div class=\'artist-avatar\'>🎵</div>'">
+                <div class="featured-details">
+                    <div class="featured-title-tag">CURRENTLY ON REPEAT</div>
+                    <div class="featured-song-title">nowhere, nobody</div>
+                    <div class="featured-artist">Ariana Grande</div>
+                </div>
+            </div>
+
+            <!-- HIDDEN AUDIO ELEMENT -->
+            <audio id="repeat-audio">
+                <source src="music/nowhere-nobody.mp3" type="audio/mpeg">
+            </audio>
+
+            <!-- CUSTOM MINI PLAYER CONTROLS -->
+            <div class="mini-player-controls" onclick="togglePlay(event)">
+                <div class="equalizer" id="equalizer">
+                    <span></span><span></span><span></span>
+                </div>
+                <button class="play-btn" id="play-btn">▶</button>
+            </div>
+        </div>
+
+            <!-- FAVORITE ARTISTS & FAVE SONGS -->
+            <div class="top1-title" style="text-align: left; font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 1rem;">
+                🎤 Favorite Artists & Go-To Tracks
+            </div>
+
+            <div class="artist-grid">
+
+                <!-- ARTIST 1: ARIANA GRANDE -->
+                <a href="https://open.spotify.com/track/5BBkvXH2jYROUzKIB7WX7S?si=_y_Fd3J1TnqfSHPoL8ygvA&utm_source=copy-link" target="_blank" class="artist-card-link">
+                    <div class="artist-track-card">
+                        <img src="images/ariana.jpg" alt="Ariana Grande" class="artist-avatar" onerror="this.outerHTML='<div class=\'artist-avatar\'>🎤</div>'">
+                        <div class="artist-info">
+                            <div class="artist-name">Ariana Grande</div>
+                            <div class="fave-song">intro (end of the world) 🎵</div>
+                            <div class="song-tag">Top Favorite Song</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- ARTIST 2: ARTHUR NERY -->
+                <a href="https://open.spotify.com/track/2v6jmF6VQWS96x6tSg05IC?si=cffbKAAPTH2uGTU6TD716A&utm_source=copy-link" target="_blank" class="artist-card-link">
+                    <div class="artist-track-card">
+                        <img src="images/arthur.jpg" alt="Arthur Nery" class="artist-avatar" onerror="this.outerHTML='<div class=\'artist-avatar\'>🎤</div>'">
+                        <div class="artist-info">
+                            <div class="artist-name">Arthur Nery</div>
+                            <div class="fave-song">TAKE ALL THE LOVE 🎵</div>
+                            <div class="song-tag">Top Favorite Song</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- ARTIST 3: TAYLOR SWIFT -->
+                <a href="https://open.spotify.com/track/1DTRUYVd8rYpla9hhVVwjo?si=bd2NEahGSfyXXiWF-5fyyQ&utm_source=copy-link" target="_blank" class="artist-card-link">
+                    <div class="artist-track-card">
+                        <img src="images/taylor.jpg" alt="Taylor Swift" class="artist-avatar" onerror="this.outerHTML='<div class=\'artist-avatar\'>🎤</div>'">
+                        <div class="artist-info">
+                            <div class="artist-name">Taylor Swift</div>
+                            <div class="fave-song">The Manuscript 🎵</div>
+                            <div class="song-tag">Top Favorite Song</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- ARTIST 4: OLIVIA DEAN -->
+                <a href="https://open.spotify.com/track/6sGIMrtIzQjdzNndVxe397?si=Y3bsf8K1SpOjlvw2v4FadQ&utm_source=copy-link" target="_blank" class="artist-card-link">
+                    <div class="artist-track-card">
+                        <img src="images/olivia.jpg" alt="Olivia Dean" class="artist-avatar" onerror="this.outerHTML='<div class=\'artist-avatar\'>🎤</div>'">
+                        <div class="artist-info">
+                            <div class="artist-name">Olivia Dean</div>
+                            <div class="fave-song">So Easy (To Fall In Love) 🎵</div>
+                            <div class="song-tag">Top Favorite Song</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- ARTIST 5: SABRINA CARPENTER -->
+                <a href="https://open.spotify.com/track/2qSkIjg1o9h3YT9RAgYN75?si=JwwORBbYQ-2NTQo8qBmclA&utm_source=copy-link" target="_blank" class="artist-card-link">
+                    <div class="artist-track-card">
+                        <img src="images/sabrina.jpg" alt="Sabrina Carpenter" class="artist-avatar" onerror="this.outerHTML='<div class=\'artist-avatar\'>🎤</div>'">
+                        <div class="artist-info">
+                            <div class="artist-name">Sabrina Carpenter</div>
+                            <div class="fave-song">Espresso 🎵</div>
+                            <div class="song-tag">Top Favorite Song</div>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- ARTIST 6: DANIEL CAESAR -->
+                <a href="https://open.spotify.com/track/2uP6t2J5MEwhr9rDkAAzwh?si=K3N8vnHeRAa2KR80LLjA5A&utm_source=copy-link" target="_blank" class="artist-card-link">
+                    <div class="artist-track-card">
+                        <img src="images/daniel.jpg" alt="Daniel Caesar" class="artist-avatar" onerror="this.outerHTML='<div class=\'artist-avatar\'>🎤</div>'">
+                        <div class="artist-info">
+                            <div class="artist-name">Daniel Caesar</div>
+                            <div class="fave-song">Get You 🎵</div>
+                            <div class="song-tag">Top Favorite Song</div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+            <!-- SOUND PROFILE / GENRES -->
+            <div class="top1-title" style="text-align: left; font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 1rem;">
+                🎛️ Sound Profile & Genres
+            </div>
+
+            <div class="sound-profile-grid">
+                <div class="genre-card">
+                    <h3>🎹 R&B</h3>
+                    <p>Smooth rhythms, soulful melodies, and deep emotional vocal performances.</p>
+                </div>
+                <div class="genre-card">
+                    <h3>✨ Pop</h3>
+                    <p>Catchy beats, energetic anthems, and memorable lyrics that elevate the mood.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer">
+            © Copyright <strong><span>TripleSeven</span></strong>. All Rights Reserved
+        </div>
+    </footer>
+    <script>
+    const audio = document.getElementById('repeat-audio');
+    const playBtn = document.getElementById('play-btn');
+    const equalizer = document.getElementById('equalizer');
+
+    function playTrack() {
+        audio.play().then(() => {
+            playBtn.innerHTML = '❚❚'; // Changes button to Pause icon
+            equalizer.classList.add('playing');
+        }).catch(() => {
+            // Handles browser auto-play restriction gracefully
+        });
+    }
+
+    function pauseTrack() {
+        audio.pause();
+        playBtn.innerHTML = '▶'; // Changes button to Play icon
+        equalizer.classList.remove('playing');
+    }
+
+    function togglePlay(event) {
+        event.stopPropagation(); // Prevents card event conflicts
+        if (audio.paused) {
+            playTrack();
+        } else {
+            pauseTrack();
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripleSeven - Player 777</title>
+    <link rel="stylesheet" href="diy-style.css">
+    <style>
+        .gaming-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .stat-badge-grid {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .stat-chip {
+            background: rgba(255, 0, 127, 0.1);
+            border: 1px solid var(--pink-primary, #ff007f);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* POPUP MODAL FOR PHOTOS */
+        #imageModal {
+            display: none;
+            position: fixed !important;
+            z-index: 999999 !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(4, 7, 17, 0.9) !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        #imageModal.active { display: flex !important; }
+        #imageModal .modal-content {
+            background: #0d152d !important;
+            border: 2px solid var(--pink-primary, #ff007f) !important;
+            border-radius: 16px !important;
+            width: 90% !important;
+            max-width: 380px !important;
+            padding: 20px !important;
+            position: relative !important;
+            text-align: center !important;
+        }
+        #imageModal .modal-img {
+            max-width: 100% !important;
+            max-height: 250px !important;
+            object-fit: contain !important;
+            border-radius: 8px !important;
+            margin-bottom: 12px !important;
+        }
+        #imageModal .close-btn {
+            position: absolute !important;
+            top: 8px !important;
+            right: 14px !important;
+            color: var(--pink-primary, #ff007f) !important;
+            font-size: 28px !important;
+            font-weight: bold !important;
+            cursor: pointer !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header-Left">
+                <a href="index.html" class="logo">TripleSeven</a>
+            </div>
+            <div class="header-Right">
+                <a href="about.html">Player Profile</a>
+                <a href="origin.html">Why 777?</a>
+                <a class="active" href="gaming.html">Player 777</a>
+                <a href="movies.html">The 7th Reel</a>
+                <a href="music.html">The 7th Track</a>
+                <a href="index.html">Start Here</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="hero-badge">GAMING ARCHIVES // PLAYER 777</div>
+        <h1>Gamer Dossier</h1>
+        <p class="hero-description">
+            Current main, signature heroes, legacy favorites, and chill pastime puzzles.
+        </p>
+
+        <div class="top1-container">
+            <div class="gaming-grid">
+                
+                <!-- CARD 1: MLBB HIGHEST RANK -->
+                <div class="card clickable-card" onclick="openSingleModal('images/mlbb-rank.jpg', 'Mythical Glory Peak', 'Highest rank attained: Mythical Glory with 57 Stars.')">
+                    <div class="genre-badge">Current Main</div>
+                    <h3>Mobile Legends: Bang Bang 📱</h3>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #a0aec0;">Highest Rank Attained</p>
+                    <div class="stat-badge-grid">
+                        <div class="stat-chip">⭐ Mythical Glory (57 Stars)</div>
+                    </div>
+                    <p style="margin-top: 0.8rem; font-size: 0.8rem; color: var(--pink-light, #ff77b4);">📸 Click to view rank proof screenshot</p>
+                </div>
+
+                <!-- CARD 2: MAIN HEROES & ROLES -->
+                <div class="card clickable-card" onclick="openSingleModal('images/mlbb-mains.jpg', 'Signature Heroes', 'Main roles: Support & Mage. Mains: Angela and Zetian.')">
+                    <div class="genre-badge">Main Roles & Pool</div>
+                    <h3>Signature Heroes ⚔️</h3>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #a0aec0;">Primary roles: Support & Mid Lane Mage</p>
+                    <div class="stat-badge-grid">
+                        <div class="stat-chip">🧸 Support / Angela</div>
+                        <div class="stat-chip">🔮 Mage / Zetian</div>
+                    </div>
+                    <p style="margin-top: 0.8rem; font-size: 0.8rem; color: var(--pink-light, #ff77b4);">📸 Click to view hero stats / main pool</p>
+                </div>
+
+                <!-- CARD 3: RETIRED / PREVIOUS GAMES -->
+                <div class="card clickable-card" onclick="openSingleModal('images/codm.jpg', 'Call of Duty: Mobile Highlight', 'All-time favorite shooter during my active CODM era!')">
+                    <div class="genre-badge">Legacy Titles</div>                    <div class="genre-badge">Legacy Titles</div>
+                    <h3>Games I Used to Play 🔫</h3>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #a0aec0;">Shooter era favorites on mobile & PC.</p>
+                    <div class="stat-badge-grid">
+                        <div class="stat-chip">🔥 Call of Duty: Mobile (All-Time Favorite)</div>
+                        <div class="stat-chip">🎯 Valorant</div>
+                    </div>
+                    <p style="margin-top: 0.8rem; font-size: 0.8rem; color: var(--pink-light, #ff77b4);">📸 Click to view CODM screenshot</p>
+                </div>
+
+                <!-- CARD 4: PASTIME PUZZLE GAMES -->
+                <div class="card">
+                    <div class="genre-badge">Casual & Logic</div>
+                    <h3>Current Pastime Games 🧩</h3>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #a0aec0;">Go-to brain teasers during downtime.</p>
+                    <div class="stat-badge-grid">
+                        <div class="stat-chip">🔢 Sudoku</div>
+                        <div class="stat-chip">💣 Minesweeper</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SINGLE-PHOTO POPUP MODAL -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="Proof Photo" class="modal-img">
+            <h3 id="modalTitle" style="font-size: 1.2rem; color: #fff; margin: 8px 0;">Card Title</h3>
+            <p id="modalDescription" style="font-size: 0.85rem; color: #a0aec0;">Description goes here.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer">
+            © Copyright <strong><span>TripleSeven</span></strong>. All Rights Reserved
+        </div>
+    </footer>
+
+    <script>
+        function openSingleModal(imagePath, titleText, descText) {
+            document.getElementById('modalImg').src = imagePath;
+            document.getElementById('modalTitle').innerText = titleText;
+            document.getElementById('modalDescription').innerText = descText;
+            document.getElementById('imageModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+    </script>
+</body>
+</html>
